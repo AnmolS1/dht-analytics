@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# if this file fails to run with error:
+# 		permission denied: ./get_metrics
+# run the following command
+# 		chmod u+x get_metrics
+
+python3 main.py

@@ -1,0 +1,3 @@
+protobuf==5.28.3
+python-dotenv==1.0.1
+selenium==4.25.0
