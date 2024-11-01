@@ -39,8 +39,19 @@ def login():
 	
 	driver.get('https://business.facebook.com/')
 	
+	original_window_handle = driver.current_window_handle
+	
 	login_with_ig_btn = wait.until(EC.presence_of_all_elements_located((By.XPATH, '//div[@role=\'button\']')))[1]
 	login_with_ig_btn.click()
+	
+	try:
+		wait.until(EC.number_of_windows_to_be(2))
+		for handle in driver.window_handles:
+			if handle != original_window_handle:
+				driver.switch_to.window(handle)
+				break
+	except:
+		original_window_handle = None
 	
 	username_input = wait.until(EC.presence_of_element_located((By.XPATH, '//input[@name=\'username\']')))
 	password_input = wait.until(EC.presence_of_element_located((By.XPATH, '//input[@name=\'password\']')))
@@ -52,6 +63,10 @@ def login():
 	
 	save_login_info_btn = wait.until(EC.presence_of_element_located((By.XPATH, '//div[text()=\'Not now\']')))
 	save_login_info_btn.click()
+	
+	if original_window_handle:
+		wait.until(EC.number_of_windows_to_be(1))
+		driver.switch_to.window(original_window_handle)
 
 def get_reach() -> int:
 	if not driver or not wait:

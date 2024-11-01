@@ -5,11 +5,11 @@ from google.analytics.data_v1beta.types import (
 from dotenv import load_dotenv
 import os
 import sys
-from typing import Literal
+from typing import Literal, Tuple
 
 client = None
 
-def setup() -> tuple[tuple[str, Literal['home page form submission']], tuple[str, Literal['home_buy_now']], tuple[str, Literal['mango_buy_now_click']], tuple[str, Literal['rose buy now']]]:
+def setup() -> Tuple[Tuple[str, Literal['home page form submission']], Tuple[str, Literal['home_buy_now']], Tuple[str, Literal['mango_buy_now_click']], Tuple[str, Literal['rose buy now']]]:
 	load_dotenv()
 	
 	global client
@@ -67,7 +67,7 @@ def do_the_math(home, mango, rose) -> float:
 	
 	return conversion_rate
 
-def get_conversion_rate() -> tuple[str, int]:
+def get_conversion_rate() -> Tuple[str, int]:
 	home_form_submit_info, home_cta_info, mango_cta_info, rose_cta_info = setup()
 	
 	home_form = retrieve_total_users_given_property(home_form_submit_info[0])
