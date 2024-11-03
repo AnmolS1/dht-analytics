@@ -4,37 +4,41 @@
 **/chromedriver
 
 # Compiled output
-/analytics/dist
-/analytics/tmp
-/analytics/out-tsc
-/analytics/bazel-out
+/dist
+/tmp
+/out-tsc
+/bazel-out
 
 # Node
-/analytics/node_modules
-/analytics/npm-debug.log
-/analytics/yarn-error.log
+/node_modules
+npm-debug.log
+yarn-error.log
 
 # IDEs and editors
-/analytics/.idea/
-/analytics/.project
-/analytics/.classpath
-/analytics/.c9/
-/analytics/*.launch
-/analytics/.settings/
-/analytics/*.sublime-workspace
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
 
 # Visual Studio Code
-/analytics/.vscode
-/analytics/.history/*
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
 
 # Miscellaneous
-/analytics/.angular/cache
-/analytics/.sass-cache/
-/analytics/connect.lock
-/analytics/coverage
-/analytics/libpeerconnection.log
-/analytics/testem.log
-/analytics/typings
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
 
 # System files
 .DS_Store
