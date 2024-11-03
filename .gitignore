@@ -2,3 +2,40 @@
 **/.env
 **/credentials.json
 **/chromedriver
+
+# Compiled output
+/analytics/dist
+/analytics/tmp
+/analytics/out-tsc
+/analytics/bazel-out
+
+# Node
+/analytics/node_modules
+/analytics/npm-debug.log
+/analytics/yarn-error.log
+
+# IDEs and editors
+/analytics/.idea/
+/analytics/.project
+/analytics/.classpath
+/analytics/.c9/
+/analytics/*.launch
+/analytics/.settings/
+/analytics/*.sublime-workspace
+
+# Visual Studio Code
+/analytics/.vscode
+/analytics/.history/*
+
+# Miscellaneous
+/analytics/.angular/cache
+/analytics/.sass-cache/
+/analytics/connect.lock
+/analytics/coverage
+/analytics/libpeerconnection.log
+/analytics/testem.log
+/analytics/typings
+
+# System files
+.DS_Store
+Thumbs.db
