@@ -2,7 +2,7 @@ h1 {
 	text-align: center;
 	text-transform: uppercase;
 	font-weight: 500;
-	margin: 50px 0 50px 0;
+	margin-bottom: 50px;
 }
 
 #box-container {
@@ -16,5 +16,9 @@ h1 {
 		flex-flow: column nowrap;
 		justify-content: center;
 		align-items: center;
+	}
+
+	@media (max-width: 395px) {
+		align-items: flex-start;
 	}
 }
