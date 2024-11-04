@@ -11,10 +11,9 @@
 	align-items: center;
 	margin: 0;
 
-	row-gap: 5%;
+	row-gap: 25px;
 
 	width: calc(80vw / 3);
-	height: calc(80vw / 3);
 	min-width: 450px;
 	min-height: 450px;
 
@@ -24,12 +23,16 @@
 	}
 
 	h2 {
-		margin: 0;
+		margin: 25px 0 0 0;
 		text-align: center;
 	}
 
 	table {
 		padding: 0 auto;
 		text-align: left;
+	}
+
+	#data-points {
+		margin: 0 0 25px 0;
 	}
 }
