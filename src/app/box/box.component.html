@@ -1,13 +1,13 @@
-<div id="container">
+<div id="container" tableSizer>
 	<h2>{{ title }}</h2>
-	<table>
+	<table #metricsTable id="metricsTable">
 		<thead>
 			<tr>
 				<th>Metric</th>
 				<th>Value</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody class="data">
 			<tr>
 				<td>Click-Through Rate</td>
 				<td>10%</td>
@@ -32,7 +32,7 @@
 				<td style="vertical-align:top">Country Count</td>
 				<td>
 					<table>
-						<tbody>
+						<tbody id="countryData">
 							<tr>
 								<td>USA</td>
 								<td>10</td>
@@ -64,37 +64,29 @@
 		</tbody>
 	</table>
 	
-	<table id="data-points">
+	<table #dataPoints id="dataPoints">
 		<thead>
 			<tr>
 				<th>Data Point</th>
 				<th>Value</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody class="data">
 			<tr>
-				<td>Click-Through Rate</td>
-				<td>10%</td>
-			</tr>
-			<tr>
-				<td>Conversion Rate</td>
-				<td>10%</td>
-			</tr>
-			<tr>
-				<td>Bounce Rate</td>
-				<td>10%</td>
-			</tr>
-			<tr>
-				<td>Engagement Timespan</td>
-				<td>10%</td>
-			</tr>
-			<tr>
-				<td>Page Visits</td>
-				<td>10%</td>
-			</tr>
-			<tr>
-				<td>Country Count</td>
+				<td>Total "Buy Now" clicks</td>
 				<td>10</td>
+			</tr>
+			<tr>
+				<td>Unique Visitors</td>
+				<td>10</td>
+			</tr>
+			<tr>
+				<td>User Engagements</td>
+				<td>10</td>
+			</tr>
+			<tr>
+				<td>Social Media Reach</td>
+				<td>2313</td>
 			</tr>
 		</tbody>
 	</table>
