@@ -4,6 +4,8 @@
 **/chromedriver
 
 .env.development.local
+/.vscode
+/src/environments
 
 # Compiled output
 /dist
