@@ -1,37 +1,79 @@
-<div id="container">
+<div id="container" tableSizer>
 	<h2>{{ title }}</h2>
-	<table>
-		<thead>
-			<tr>
-				<th>Metric</th>
-				<th>Value</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>Click-Through Rate</td>
-				<td>10%</td>
-			</tr>
-			<tr>
-				<td>Conversion Rate</td>
-				<td>10%</td>
-			</tr>
-			<tr>
-				<td>Bounce Rate</td>
-				<td>10%</td>
-			</tr>
-			<tr>
-				<td>Engagement Timespan</td>
-				<td>10%</td>
-			</tr>
-			<tr>
-				<td>Page Visits</td>
-				<td>10%</td>
-			</tr>
-			<tr>
-				<td>Country Count</td>
-				<td>10%</td>
-			</tr>
-		</tbody>
-	</table>
+	@if (metrics) {
+		<table #metricsTable id="metricsTable">
+			<thead>
+				<tr>
+					<th>Metric</th>
+					<th>Value</th>
+				</tr>
+			</thead>
+			<tbody class="data">
+				<tr>
+					<td>Click-Through Rate</td>
+					<td>{{ metrics.metrics.ctr }}</td>
+				</tr>
+				<tr>
+					<td>Conversion Rate</td>
+					<td>{{ metrics.metrics.conversion }}</td>
+				</tr>
+				<tr>
+					<td>Bounce Rate</td>
+					<td>{{ metrics.metrics.bounce }}</td>
+				</tr>
+				<tr>
+					<td>Engagement Timespan</td>
+					<td>{{ metrics.metrics.engagement }}</td>
+				</tr>
+				<tr>
+					<td>Page Visits</td>
+					<td>{{ metrics.metrics.visits }}</td>
+				</tr>
+				<tr>
+					<td style="vertical-align:top">Country Count</td>
+					<td>
+						<table>
+							<tbody id="countryData">
+								@for (item of metrics.metrics.countrycount; track item.country) {
+									<tr>
+										<td>{{ item.country }}</td>
+										<td>{{ item.count }}</td>
+									</tr>
+								}
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<table #dataPoints id="dataPoints">
+			<thead>
+				<tr>
+					<th>Data Point</th>
+					<th>Value</th>
+				</tr>
+			</thead>
+			<tbody class="data">
+				<tr>
+					<td>CTA clicks</td>
+					<td>{{ metrics['data points']['cta clicks'] }}</td>
+				</tr>
+				<tr>
+					<td>Unique Visitors</td>
+					<td>{{ metrics['data points']['visitors'] }}</td>
+				</tr>
+				<tr>
+					<td>Engagement Events</td>
+					<td>{{ metrics['data points']['engagements'] }}</td>
+				</tr>
+				<tr>
+					<td>Social Media Reach</td>
+					<td>{{ metrics['data points']['reach'] }}</td>
+				</tr>
+			</tbody>
+		</table>
+	} @else {
+		<p>Loading metrics...</p>
+	}
 </div>

@@ -11,10 +11,9 @@
 	align-items: center;
 	margin: 0;
 
-	row-gap: 5%;
+	row-gap: 25px;
 
 	width: calc(80vw / 3);
-	height: calc(80vw / 3);
 	min-width: 450px;
 	min-height: 450px;
 
@@ -24,12 +23,62 @@
 	}
 
 	h2 {
-		margin: 0;
+		margin: 25px 0 0 0;
 		text-align: center;
 	}
 
 	table {
 		padding: 0 auto;
 		text-align: left;
+		border-collapse: collapse;
+
+		thead {
+			background-color: black;
+			color: white;
+		}
+
+		tbody {
+			font-weight: 550;
+
+			tr {
+				border-bottom: 1px solid black;
+				border-top: 1px solid black;
+
+				td:first-child {
+					border-right: 1px solid black;
+				}
+			}
+
+			tr:last-child {
+				border-bottom: 0;
+			}
+			
+			tr:nth-child(odd) {
+				background-color: #c9c9c9;
+			}
+		}
+
+		#countryData {
+			tr {
+				background-color: unset;
+				
+				td:first-child {
+					border-right: 0;
+				}
+			}
+
+			tr:first-child {
+				border-top: 0;
+			}
+
+			tr:last-child {
+				border-bottom: 0;
+			}
+		}
+	}
+	
+	#dataPoints {
+		margin: 0 0 25px 0;
+		table-layout: fixed;
 	}
 }
