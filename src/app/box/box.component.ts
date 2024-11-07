@@ -19,7 +19,6 @@ export class BoxComponent implements OnInit {
 		this.dbService.retrieveData(this.title).subscribe({
 			next: (data) => {
 				this.metrics = JSON.parse(data);
-				console.log(this.metrics);
 			},
 			error: (error) => {
 				console.error('Error retrieving data', error)
