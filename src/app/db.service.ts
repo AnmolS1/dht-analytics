@@ -34,6 +34,18 @@ export class DBService {
 		);
 	}
 
+	tryThis(): Observable<any> {
+		return this.http.get('/api/update-today-tmr').pipe(
+			map(response => {
+				return response;
+			}),
+			catchError(error => {
+				console.error('Error retrieving data:', error);
+				return of(null);
+			})
+		);
+	}
+
 	private getNextHourDate(type: string): Date {
 		const now = new Date();
 		let date = new Date(now);

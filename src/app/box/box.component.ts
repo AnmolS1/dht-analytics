@@ -26,4 +26,15 @@ export class BoxComponent implements OnInit {
 			}
 		});
 	}
+
+	tryThis() {
+		this.dbService.tryThis().subscribe({
+			next: (data) => {
+				console.log(data);
+			},
+			error: (error) => {
+				console.error('Error retrieving data', error);
+			}
+		});
+	}
 }
