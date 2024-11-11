@@ -27,8 +27,8 @@ export class BoxComponent implements OnInit {
 		});
 	}
 
-	tryThis() {
-		this.dbService.tryThis(this.title).subscribe({
+	last30Minutes() {
+		this.dbService.last30Minutes().subscribe({
 			next: (data) => {
 				console.log(data);
 			},

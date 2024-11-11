@@ -125,5 +125,9 @@
 		<p>Loading metrics...</p>
 	}
 
-	<button (click)="tryThis()">clickily click</button>
+	@if (title === "Last 30 Minutes") {
+		<button #updateBtn id="updateBtn" (click)="last30Minutes()">
+			update data
+		</button>
+	}
 </div>
