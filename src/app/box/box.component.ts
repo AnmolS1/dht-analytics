@@ -21,20 +21,20 @@ export class BoxComponent implements OnInit {
 				this.metrics = JSON.parse(data);
 			},
 			error: (error) => {
-				console.error('Error retrieving data', error)
+				console.error("Error retrieving data", error);
 				this.metrics = null;
-			}
+			},
 		});
 	}
 
 	tryThis() {
-		this.dbService.tryThis().subscribe({
+		this.dbService.tryThis(this.title).subscribe({
 			next: (data) => {
 				console.log(data);
 			},
 			error: (error) => {
-				console.error('Error retrieving data', error);
-			}
+				console.error("Error retrieving data", error);
+			},
 		});
 	}
 }
