@@ -33,7 +33,6 @@
 		padding: 0 auto;
 		text-align: left;
 		border-collapse: collapse;
-		min-width: 100px;
 
 		thead {
 			background-color: black;
@@ -50,10 +49,13 @@
 				td:first-child {
 					border-right: 1px solid black;
 					padding-right: 5px;
+
+					min-width: 150px;
 				}
 
 				td:last-child {
 					padding-left: 5px;
+					min-width: 115px;
 				}
 			}
 
@@ -72,6 +74,11 @@
 
 				td:first-child {
 					border-right: 0;
+					min-width: unset;
+				}
+
+				td:last-child {
+					min-width: unset;
 				}
 			}
 
