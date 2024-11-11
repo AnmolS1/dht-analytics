@@ -34,38 +34,16 @@ export class DBService {
 		);
 	}
 
-	tryThis(type: string): Observable<any> {
-		if (type === "Yesterday") {
-			return this.http.get("/api/retrieve-yesterday").pipe(
-				map((response) => {
-					return response;
-				}),
-				catchError((error) => {
-					console.error("Error retrieving data:", error);
-					return of(null);
-				}),
-			);
-		} else if (type === "All Time") {
-			return this.http.get("/api/retrieve-all-time").pipe(
-				map((response) => {
-					return response;
-				}),
-				catchError((error) => {
-					console.error("Error retrieving data:", error);
-					return of(null);
-				}),
-			);
-		} else {
-			return this.http.get("/api/retrieve-last-30-minutes").pipe(
-				map((response) => {
-					return response;
-				}),
-				catchError((error) => {
-					console.error("Error retrieving data:", error);
-					return of(null);
-				}),
-			);
-		}
+	last30Minutes(): Observable<any> {
+		return this.http.get("/api/retrieve-last-30-minutes").pipe(
+			map((response) => {
+				return response;
+			}),
+			catchError((error) => {
+				console.error("Error retrieving data:", error);
+				return of(null);
+			}),
+		);
 	}
 
 	private getNextHourDate(type: string): Date {
