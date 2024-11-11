@@ -1,6 +1,10 @@
 {
 	"crons": [
 		{
+			"path": "/api/retrieve-last-30-minutes",
+			"schedule": "1,31 * * * *"
+		},
+		{
 			"path": "/api/retrieve-daily",
 			"schedule": "1 0 * * *"
 		}
