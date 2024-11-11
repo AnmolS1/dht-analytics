@@ -40,14 +40,11 @@ module.exports = async (req, res) => {
 		});
 
 		let country_idx_manager = {};
-		const yesterday_date = new Date();
-		yesterday_date.setDate(yesterday_date.getDate() - 1);
-		const formattedYesterday = yesterday_date.toISOString().split("T")[0];
 
 		for (let property of properties) {
 			const metrics = [
 				{ name: "bounceRate" },
-				{ name: "averageSessionDuration" },
+				{ name: "userEngagementDuration" },
 				{ name: "screenPageViews" },
 				{ name: "activeUsers" },
 				{ name: "engagedSessions" },
@@ -141,9 +138,6 @@ module.exports = async (req, res) => {
 		yesterday.metrics.bounce = Math.round(
 			(yesterday.metrics.bounce / 4) * 100,
 		);
-		yesterday.metrics.engagement = Math.round(
-			yesterday.metrics.engagement / 4,
-		);
 		yesterday.metrics.visits = Math.round(yesterday.metrics.visits / 4);
 		yesterday.data_points.visitors = Math.round(
 			yesterday.data_points.visitors / 4,
@@ -157,6 +151,14 @@ module.exports = async (req, res) => {
 			);
 		}
 
+		yesterday.metrics.engagement =
+			yesterday.data_points.visitors != 0
+				? Math.round(
+						yesterday.metrics.engagement /
+							4 /
+							yesterday.data_points.visitors,
+					)
+				: 0;
 		yesterday.metrics.conversion =
 			yesterday.data_points.visitors != 0
 				? Math.round(

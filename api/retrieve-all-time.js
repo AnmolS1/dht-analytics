@@ -44,7 +44,7 @@ module.exports = async (req, res) => {
 		for (let property of properties) {
 			const metrics = [
 				{ name: "bounceRate" },
-				{ name: "averageSessionDuration" },
+				{ name: "userEngagementDuration" },
 				{ name: "screenPageViews" },
 				{ name: "activeUsers" },
 				{ name: "engagedSessions" },
@@ -124,9 +124,6 @@ module.exports = async (req, res) => {
 		all_time.metrics.bounce = Math.round(
 			(all_time.metrics.bounce / 4) * 100,
 		);
-		all_time.metrics.engagement = Math.round(
-			all_time.metrics.engagement / 4,
-		);
 		all_time.metrics.visits = Math.round(all_time.metrics.visits / 4);
 		all_time.data_points.visitors = Math.round(
 			all_time.data_points.visitors / 4,
@@ -140,6 +137,14 @@ module.exports = async (req, res) => {
 			);
 		}
 
+		all_time.metrics.engagement =
+			all_time.data_points.visitors != 0
+				? Math.round(
+						all_time.metrics.engagement /
+							4 /
+							all_time.data_points.visitors,
+					)
+				: 0;
 		all_time.metrics.conversion =
 			all_time.data_points.visitors != 0
 				? Math.round(
