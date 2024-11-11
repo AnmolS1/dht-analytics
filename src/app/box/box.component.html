@@ -9,36 +9,61 @@
 				</tr>
 			</thead>
 			<tbody class="data">
-				<tr>
-					<td>Click-Through Rate</td>
-					<td>{{ metrics.metrics.ctr }}</td>
-				</tr>
+				@if (metrics?.metrics?.ctr !== undefined) {
+					<tr>
+						<td>Click-Through Rate</td>
+						<td>{{ metrics.metrics.ctr }}%</td>
+					</tr>
+				}
 				<tr>
 					<td>Conversion Rate</td>
-					<td>{{ metrics.metrics.conversion }}</td>
+					<td>{{ metrics.metrics.conversion }}%</td>
 				</tr>
 				<tr>
 					<td>Bounce Rate</td>
-					<td>{{ metrics.metrics.bounce }}</td>
+					<td>{{ metrics.metrics.bounce }}%</td>
 				</tr>
-				<tr>
-					<td>Engagement Timespan</td>
-					<td>{{ metrics.metrics.engagement }}</td>
-				</tr>
+				@if (metrics?.metrics?.engagement !== undefined) {
+					<tr>
+						<td>Engagement Timespan</td>
+						<td>
+							{{ metrics.metrics.engagement }}
+							@if (metrics.metrics.engagement != 1) {
+								seconds
+							} @else {
+								second
+							}
+						</td>
+					</tr>
+				}
 				<tr>
 					<td>Page Visits</td>
-					<td>{{ metrics.metrics.visits }}</td>
+					<td>
+						{{ metrics.metrics.visits }}
+						@if (metrics.metrics.visits != 1) {
+							visits
+						} @else {
+							visit
+						}
+					</td>
 				</tr>
 				<tr>
-					<td style="vertical-align:top">Country Count</td>
+					<td style="vertical-align: top">Country Count</td>
 					<td>
 						<table>
 							<tbody id="countryData">
-								@for (item of metrics.metrics.countrycount; track item.country) {
-									<tr>
-										<td>{{ item.country }}</td>
-										<td>{{ item.count }}</td>
-									</tr>
+								@if (metrics.data_points.visitors == 0) {
+									<div>None</div>
+								} @else {
+									@for (
+										item of metrics.metrics.countryCount;
+										track item.country
+									) {
+										<tr>
+											<td>{{ item.country }}</td>
+											<td>{{ item.count }}</td>
+										</tr>
+									}
 								}
 							</tbody>
 						</table>
@@ -46,7 +71,7 @@
 				</tr>
 			</tbody>
 		</table>
-		
+
 		<table #dataPoints id="dataPoints">
 			<thead>
 				<tr>
@@ -57,23 +82,48 @@
 			<tbody class="data">
 				<tr>
 					<td>CTA clicks</td>
-					<td>{{ metrics['data points']['cta clicks'] }}</td>
+					<td>
+						{{ metrics.data_points.cta_clicks }}
+						@if (metrics.metrics.clicks != 1) {
+							clicks
+						} @else {
+							click
+						}
+					</td>
 				</tr>
 				<tr>
 					<td>Unique Visitors</td>
-					<td>{{ metrics['data points']['visitors'] }}</td>
+					<td>
+						{{ metrics.data_points.visitors }}
+						@if (metrics.data_points.visitors != 1) {
+							visitors
+						} @else {
+							visitor
+						}
+					</td>
 				</tr>
 				<tr>
 					<td>Engagement Events</td>
-					<td>{{ metrics['data points']['engagements'] }}</td>
+					<td>
+						{{ metrics.data_points.engagements }}
+						@if (metrics.data_points.engagements != 1) {
+							events
+						} @else {
+							event
+						}
+					</td>
 				</tr>
-				<tr>
-					<td>Social Media Reach</td>
-					<td>{{ metrics['data points']['reach'] }}</td>
-				</tr>
+				@if (metrics?.data_points?.reach !== undefined) {
+					<tr>
+						<td>Social Media Reach</td>
+						<td>{{ metrics.data_points.reach }}</td>
+					</tr>
+				}
 			</tbody>
 		</table>
 	} @else {
 		<p>Loading metrics...</p>
 	}
+
+	<button (click)="tryThis()">clickily click</button>
 </div>

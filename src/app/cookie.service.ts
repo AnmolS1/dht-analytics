@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
 @Injectable({
-	providedIn: 'root'
+	providedIn: "root",
 })
 export class CookieService {
 	setCookie(name: string, value: string, expirationDate: Date) {
@@ -9,9 +9,11 @@ export class CookieService {
 	}
 
 	getCookie(name: string): string | null {
-		const cookies = document.cookie.split(';');
+		const cookies = document.cookie.split(";");
 		for (let cookie of cookies) {
-			const [cookieName, cookieValue] = cookie.split('=').map(c => c.trim());
+			const [cookieName, cookieValue] = cookie
+				.split("=")
+				.map((c) => c.trim());
 			if (cookieName === name) {
 				return cookieValue;
 			}
