@@ -89,29 +89,12 @@ def get_reach() -> tuple[int, int]:
 	
 	return int(total_reach.replace(',', '')), int(yesterday_reach.replace(',', ''))
 
-def insta_login():
-	if not driver or not wait:
-		print(f'Driver failed to initialize')
-		sys.exit(1)
-	
-	driver.get('https://www.instagram.com/accounts/insights/?timeframe=30')
-	
-	# username_input = wait.until(EC.presence_of_element_located((By.XPATH, '//input[@name=\'username\']')))
-	# password_input = wait.until(EC.presence_of_element_located((By.XPATH, '//input[@name=\'password\']')))
-	# username_input.send_keys(str(ig_user))
-	# password_input.send_keys(str(ig_pass))
-	
-	# login_btn = wait.until(EC.presence_of_element_located((By.XPATH, '//button[@type=\'submit\']')))
-	# login_btn.click()
-	
-	# save_login_info_btn = wait.until(EC.presence_of_element_located((By.XPATH, '//div[text()=\'Not now\']')))
-	# save_login_info_btn.click()
-
 def get_views() -> int:
 	if not driver or not wait:
 		print(f'Driver failed to initialize')
 		sys.exit(1)
 	
+	driver.get('https://www.instagram.com/accounts/insights/?timeframe=30')
 	total_views = wait.until(EC.presence_of_element_located((By.XPATH, '//span[text()=\'Views\']/../../../../div[last()]/div/div/div/span'))).text
 	
 	return int(total_views.replace(',', ''))
@@ -122,13 +105,6 @@ def get_data_points() -> tuple[int, int, int]:
 	meta_login()
 	all_time_reach, yesterday_reach = get_reach()
 	
-	# print(f'{all_time_reach=} and {yesterday_reach=}')
-	
-	# input('enter to continue - ')
-	
-	insta_login()
 	all_time_views = get_views()
-	
-	# input('enter to continue - ')
 	
 	return all_time_reach, yesterday_reach, all_time_views

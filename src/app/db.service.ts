@@ -37,6 +37,13 @@ export class DBService {
 	last30Minutes(): Observable<any> {
 		return this.http.get("/api/retrieve-last-30-minutes").pipe(
 			map((response) => {
+				const data = JSON.stringify(response);
+				const expirationDate = this.getNextHourDate("Last 30 Minutes");
+				this.cookieService.setCookie(
+					"Last 30 Minutes",
+					data,
+					expirationDate,
+				);
 				return response;
 			}),
 			catchError((error) => {
@@ -52,7 +59,7 @@ export class DBService {
 
 		if (type !== "Last 30 Minutes") {
 			date.setDate(date.getDate() + 1);
-			date.setHours(0, 5, 0, 0);
+			date.setHours(0, 30, 0, 0);
 
 			if (date <= now) {
 				date.setDate(date.getDate() + 1);
