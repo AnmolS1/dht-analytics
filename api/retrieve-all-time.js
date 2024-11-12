@@ -8,7 +8,8 @@ module.exports = async (req, res) => {
 
 	const all_time = {
 		metrics: {
-			ctr: 0,
+			uctr: 0,
+			gctr: 0,
 			conversion: 0,
 			bounce: 0,
 
@@ -21,6 +22,7 @@ module.exports = async (req, res) => {
 			visitors: 0,
 			engagements: 0,
 			reach: 0,
+			views: 0,
 		},
 	};
 
