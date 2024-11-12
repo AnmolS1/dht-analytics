@@ -30,7 +30,7 @@ export class BoxComponent implements OnInit {
 	last30Minutes() {
 		this.dbService.last30Minutes().subscribe({
 			next: (data) => {
-				console.log(data);
+				this.metrics = JSON.parse(data);
 			},
 			error: (error) => {
 				console.error("Error retrieving data", error);
