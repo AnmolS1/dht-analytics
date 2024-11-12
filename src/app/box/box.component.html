@@ -9,14 +9,38 @@
 				</tr>
 			</thead>
 			<tbody class="data">
-				@if (metrics?.metrics?.ctr !== undefined) {
+				@if (metrics?.metrics?.uctr !== undefined) {
 					<tr>
-						<td>Click-Through Rate</td>
-						<td>{{ metrics.metrics.ctr }}%</td>
+						<td class="tooltip">
+							U-CTR
+							<span class="tooltiptext">
+								<p>Unique Click-Through Rate</p>
+								<p>unique visitors / reach</p>
+							</span>
+						</td>
+						<td>{{ metrics.metrics.uctr }}%</td>
+					</tr>
+				}
+				@if (metrics?.metrics?.gctr !== undefined) {
+					<tr>
+						<td class="tooltip">
+							G-CTR
+							<span class="tooltiptext">
+								<p>Global Click-Through Rate</p>
+								<p>page visits / views</p>
+							</span>
+						</td>
+						<td>{{ metrics.metrics.gctr }}%</td>
 					</tr>
 				}
 				<tr>
-					<td>Conversion Rate</td>
+					<td class="tooltip">
+						Conversion Rate
+						<span class="tooltiptext">
+							<p>Conversion Rate</p>
+							<p>cta clicks / unique visitors</p>
+						</span>
+					</td>
 					<td>{{ metrics.metrics.conversion }}%</td>
 				</tr>
 				<tr>
@@ -117,6 +141,12 @@
 					<tr>
 						<td>Social Media Reach</td>
 						<td>{{ metrics.data_points.reach }}</td>
+					</tr>
+				}
+				@if (metrics?.data_points?.views !== undefined) {
+					<tr>
+						<td>Social Media Views</td>
+						<td>{{ metrics.data_points.views }}</td>
 					</tr>
 				}
 			</tbody>
