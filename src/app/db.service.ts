@@ -59,7 +59,7 @@ export class DBService {
 
 		if (type !== "Last 30 Minutes") {
 			date.setDate(date.getDate() + 1);
-			date.setHours(0, 30, 0, 0);
+			date.setHours(1, 1, 0, 0);
 
 			if (date <= now) {
 				date.setDate(date.getDate() + 1);
