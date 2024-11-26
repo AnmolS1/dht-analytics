@@ -9,7 +9,7 @@ h1 {
 	display: flex;
 	flex-flow: row wrap;
 	align-items: flex-start;
-	justify-content: space-between;
+	justify-content: space-evenly;
 	row-gap: 5vh;
 
 	@media (max-width: 1500px) {

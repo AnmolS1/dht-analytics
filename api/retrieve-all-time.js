@@ -55,12 +55,16 @@ module.exports = async (req, res) => {
 			const metric_requests = [
 				analyticsDataClient.runReport({
 					property: `properties/${property["id"]}`,
-					dateRanges: [{ startDate: "2023-10-19", endDate: "today" }],
+					dateRanges: [
+						{ startDate: "2023-10-19", endDate: "1daysAgo" },
+					],
 					metrics: metrics,
 				}),
 				analyticsDataClient.runReport({
 					property: `properties/${property["id"]}`,
-					dateRanges: [{ startDate: "2023-10-19", endDate: "today" }],
+					dateRanges: [
+						{ startDate: "2023-10-19", endDate: "1daysAgo" },
+					],
 					metrics: [{ name: "activeUsers" }],
 					dimensions: [{ name: "country" }],
 				}),
@@ -71,7 +75,7 @@ module.exports = async (req, res) => {
 					analyticsDataClient.runReport({
 						property: `properties/${property["id"]}`,
 						dateRanges: [
-							{ startDate: "2023-10-19", endDate: "today" },
+							{ startDate: "2023-10-19", endDate: "1daysAgo" },
 						],
 						metrics: [{ name: "eventCount" }],
 						dimensionFilter: {

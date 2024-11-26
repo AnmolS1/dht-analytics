@@ -34,24 +34,24 @@ export class DBService {
 		);
 	}
 
-	last30Minutes(): Observable<any> {
-		return this.http.get("/api/retrieve-last-30-minutes").pipe(
-			map((response) => {
-				const data = JSON.stringify(response);
-				const expirationDate = this.getNextHourDate("Last 30 Minutes");
-				this.cookieService.setCookie(
-					"Last 30 Minutes",
-					data,
-					expirationDate,
-				);
-				return response;
-			}),
-			catchError((error) => {
-				console.error("Error retrieving data:", error);
-				return of(null);
-			}),
-		);
-	}
+	// last30Minutes(): Observable<any> {
+	// 	return this.http.get("/api/retrieve-last-30-minutes").pipe(
+	// 		map((response) => {
+	// 			const data = JSON.stringify(response);
+	// 			const expirationDate = this.getNextHourDate("Last 30 Minutes");
+	// 			this.cookieService.setCookie(
+	// 				"Last 30 Minutes",
+	// 				data,
+	// 				expirationDate,
+	// 			);
+	// 			return response;
+	// 		}),
+	// 		catchError((error) => {
+	// 			console.error("Error retrieving data:", error);
+	// 			return of(null);
+	// 		}),
+	// 	);
+	// }
 
 	private getNextHourDate(type: string): Date {
 		const now = new Date();

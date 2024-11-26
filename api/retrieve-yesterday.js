@@ -58,7 +58,7 @@ module.exports = async (req, res) => {
 					dateRanges: [
 						{
 							startDate: "1daysAgo",
-							endDate: "today",
+							endDate: "1daysAgo",
 						},
 					],
 					metrics: metrics,
@@ -68,7 +68,7 @@ module.exports = async (req, res) => {
 					dateRanges: [
 						{
 							startDate: "1daysAgo",
-							endDate: "today",
+							endDate: "1daysAgo",
 						},
 					],
 					metrics: [{ name: "activeUsers" }],
@@ -83,7 +83,7 @@ module.exports = async (req, res) => {
 						dateRanges: [
 							{
 								startDate: "1daysAgo",
-								endDate: "today",
+								endDate: "1daysAgo",
 							},
 						],
 						metrics: [{ name: "eventCount" }],
