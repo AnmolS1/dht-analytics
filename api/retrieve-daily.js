@@ -1,6 +1,6 @@
 const retrieve_all_time = require("./retrieve-all-time");
 const retrieve_yesterday = require("./retrieve-yesterday");
-const retrieve_last_30 = require("./retrieve-last-30-minutes");
+// const retrieve_last_30 = require("./retrieve-last-30-minutes");
 
 module.exports = async (req, res) => {
 	try {
@@ -12,7 +12,7 @@ module.exports = async (req, res) => {
 
 		await retrieve_all_time(mockReq, mockRes);
 		await retrieve_yesterday(mockReq, mockRes);
-		await retrieve_last_30(mockReq, mockRes);
+		// await retrieve_last_30(mockReq, mockRes);
 
 		res.status(200).json({
 			message: "All functions executed successfully",
