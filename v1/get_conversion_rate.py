@@ -24,7 +24,7 @@ def setup() -> Tuple[Tuple[str, Literal['home page form submission']], Tuple[str
 
 def retrieve_total_users_given_property(property_id: str) -> int:
 	if not client:
-		print(f'The Google Analytics client failed to instantiate.')
+		print('The Google Analytics client failed to instantiate.')
 		sys.exit(1)
 	
 	total_users_request = RunReportRequest(
@@ -39,7 +39,7 @@ def retrieve_total_users_given_property(property_id: str) -> int:
 
 def retrieve_total_event_count(property_id: str, event_name: str) -> int:
 	if not client:
-		print(f'The Google Analytics client failed to instantiate.')
+		print('The Google Analytics client failed to instantiate.')
 		sys.exit(1)
 	
 	cta_event_request = RunReportRequest(
