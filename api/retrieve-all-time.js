@@ -6,25 +6,23 @@ module.exports = async (req, res) => {
 		return res.status(405).json({ error: "Method Not Allowed" });
 	}
 
-	const all_time = {
-		metrics: {
-			uctr: 0,
-			gctr: 0,
-			conversion: 0,
-			bounce: 0,
+	const all_time = {};
 
-			engagement: 0,
-			visits: 0,
-			countryCount: [],
-		},
-		data_points: {
-			cta_clicks: 0,
-			visitors: 0,
-			engagements: 0,
-			reach: 0,
-			views: 0,
-		},
-	};
+	try {
+		all_time = await sql`SELECT * FROM metrics_db WHERE type = 'All Time'`;
+	} catch (error) {
+		console.error("Error retrieving data:", error);
+		res.status(500).json({ error: "Error retrieving data" });
+	}
+
+	all_time.metrics.conversion = 0;
+	all_time.metrics.bounce = 0;
+	all_time.metrics.engagement = 0;
+	all_time.metrics.visits = 0;
+	all_time.metrics.countryCount = [];
+	all_time.data_points.cta_clicks = 0;
+	all_time.data_points.visitors = 0;
+	all_time.data_points.engagements = 0;
 
 	try {
 		const ga4_creds = JSON.parse(
