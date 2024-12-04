@@ -6,25 +6,24 @@ module.exports = async (req, res) => {
 		return res.status(405).json({ error: "Method Not Allowed" });
 	}
 
-	const yesterday = {
-		metrics: {
-			uctr: 0,
-			gctr: 0,
-			conversion: 0,
-			bounce: 0,
+	const yesterday = {};
 
-			engagement: 0,
-			visits: 0,
-			countryCount: [],
-		},
-		data_points: {
-			cta_clicks: 0,
-			visitors: 0,
-			engagements: 0,
-			reach: 0,
-			views: 0,
-		},
-	};
+	try {
+		yesterday =
+			await sql`SELECT * FROM metrics_db WHERE type = 'Yesterday'`;
+	} catch (error) {
+		console.error("Error retrieving data:", error);
+		res.status(500).json({ error: "Error retrieving data" });
+	}
+
+	yesterday.metrics.conversion = 0;
+	yesterday.metrics.bounce = 0;
+	yesterday.metrics.engagement = 0;
+	yesterday.metrics.visits = 0;
+	yesterday.metrics.countryCount = [];
+	yesterday.data_points.cta_clicks = 0;
+	yesterday.data_points.visitors = 0;
+	yesterday.data_points.engagements = 0;
 
 	try {
 		const ga4_creds = JSON.parse(
