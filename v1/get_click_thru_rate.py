@@ -34,7 +34,7 @@ def setup():
 
 def login():
 	if not driver or not wait:
-		print(f'Driver failed to initialize')
+		print('Driver failed to initialize')
 		sys.exit(1)
 	
 	driver.get('https://business.facebook.com/')
@@ -70,7 +70,7 @@ def login():
 
 def get_reach() -> int:
 	if not driver or not wait:
-		print(f'Driver failed to initialize')
+		print('Driver failed to initialize')
 		sys.exit(1)
 	
 	driver.get('https://business.facebook.com/latest/insights/overview/?business_id=561788986340298&asset_id=471205406070851')
@@ -88,7 +88,7 @@ def get_click_thru_rate(website_visits: int) -> str:
 		reach = get_reach()
 	finally:
 		if not driver:
-			print(f'Chromedriver did not initialize, you def fucked up something bc this script is flawless so fuck you')
+			print('Chromedriver did not initialize, you def fucked up something bc this script is flawless so fuck you')
 			sys.exit(1)
 		
 		driver.quit()

@@ -7,6 +7,8 @@
 /.vscode
 /src/environments
 /v1/ga4-credentials.json
+/update-sm-data/current/build
+/update-sm-data/current/dist
 
 # Compiled output
 /dist
