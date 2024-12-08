@@ -11,7 +11,7 @@ def print_to_file(data, file_path):
 	
 	all_time_metrics_sheet = wb['All Time Metrics']
 	
-	all_time_metrics_sheet.cell(row=11, column=2, value=data['all_time_reach']).number_format = numbers.FORMAT_NUMBER
-	all_time_metrics_sheet.cell(row=12, column=2, value=data['all_time_views']).number_format = numbers.FORMAT_NUMBER
+	all_time_metrics_sheet.cell(row=11, column=3, value=data['all_time_reach']).number_format = numbers.FORMAT_NUMBER
+	all_time_metrics_sheet.cell(row=12, column=3, value=data['all_time_views']).number_format = numbers.FORMAT_NUMBER
 	
 	wb.save(file_path)

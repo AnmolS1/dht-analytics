@@ -66,7 +66,7 @@ def print_yesterday_to_file(wb: Workbook, yesterday: dict[str, Any]):
 	sheet.cell(row=8, column=2, value=yesterday['cta_clicks']).number_format = numbers.FORMAT_NUMBER
 	sheet.cell(row=9, column=2, value=yesterday['visitors']).number_format = numbers.FORMAT_NUMBER
 	sheet.cell(row=10, column=2, value=yesterday['engagement']).number_format = numbers.FORMAT_NUMBER
-	sheet.cell(row=12, column=2, value='=C12').number_format = numbers.FORMAT_NUMBER
+	# sheet.cell(row=12, column=2, value='=C12').number_format = numbers.FORMAT_NUMBER
 	sheet.cell(row=14, column=2, value=yesterdays_date.strftime('%m/%d/%y')).number_format = numbers.FORMAT_DATE_YYYYMMDD2
 	
 	for country in yesterday['countryCount']:
@@ -80,29 +80,31 @@ def print_yesterday_to_file(wb: Workbook, yesterday: dict[str, Any]):
 def print_all_time_to_file(wb: Workbook, all_time: dict[str, Any]):
 	sheet = wb['All Time Metrics']
 	
-	sheet.cell(row=4, column=2, value=all_time['conversion']).number_format = numbers.FORMAT_PERCENTAGE
-	sheet.cell(row=5, column=2, value=all_time['bounce']).number_format = numbers.FORMAT_PERCENTAGE
-	sheet.cell(row=6, column=2, value=all_time['engagement'])
-	sheet.cell(row=7, column=2, value=all_time['visits'])
-	sheet.cell(row=8, column=2, value=all_time['cta_clicks'])
-	sheet.cell(row=9, column=2, value=all_time['visitors'])
-	sheet.cell(row=10, column=2, value=all_time['engagements'])
+	sheet.cell(row=4, column=3, value=all_time['conversion']).number_format = numbers.FORMAT_PERCENTAGE
+	sheet.cell(row=5, column=3, value=all_time['bounce']).number_format = numbers.FORMAT_PERCENTAGE
+	sheet.cell(row=6, column=3, value=all_time['engagement'])
+	sheet.cell(row=7, column=3, value=all_time['visits'])
+	sheet.cell(row=8, column=3, value=all_time['cta_clicks'])
+	sheet.cell(row=9, column=3, value=all_time['visitors'])
+	sheet.cell(row=10, column=3, value=all_time['engagements'])
+	sheet.cell(row=11, column=3, value=None)
+	sheet.cell(row=12, column=3, value=None)
 	
 	for row in range(4, 11):
-		sheet.cell(row=row, column=2).alignment = Alignment(horizontal='left')
+		sheet.cell(row=row, column=3).alignment = Alignment(horizontal='left')
 	
 	country_idx_manager = {}
 	row = 2
-	while sheet.cell(row=row, column=4).value:
-		country_idx_manager[sheet.cell(row=row, column=4).value] = row
+	while sheet.cell(row=row, column=5).value:
+		country_idx_manager[sheet.cell(row=row, column=5).value] = row
 		row += 1
 	
 	for country in all_time['countryCount']:
 		if country['country'] in country_idx_manager:
-			sheet.cell(row=country_idx_manager[country['country']], column=5, value=country['count']).number_format = numbers.FORMAT_NUMBER
+			sheet.cell(row=country_idx_manager[country['country']], column=6, value=country['count']).number_format = numbers.FORMAT_NUMBER
 		else:
-			sheet.cell(row=(2 + len(country_idx_manager)), column=4, value=country['country']).number_format = numbers.FORMAT_NUMBER
-			sheet.cell(row=(2 + len(country_idx_manager)), column=5, value=country['count']).number_format = numbers.FORMAT_NUMBER
+			sheet.cell(row=(2 + len(country_idx_manager)), column=5, value=country['country']).number_format = numbers.FORMAT_NUMBER
+			sheet.cell(row=(2 + len(country_idx_manager)), column=6, value=country['count']).number_format = numbers.FORMAT_NUMBER
 			country_idx_manager[country['country']] = row + len(country_idx_manager)
 
 def print_to_file(yesterday: dict[str, Any], all_time: dict[str, Any], file_path: str):

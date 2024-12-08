@@ -33,7 +33,7 @@ def setup():
 
 def meta_login():
 	if not driver or not wait:
-		print(f'Driver failed to initialize')
+		print('Driver failed to initialize')
 		sys.exit(1)
 	
 	driver.get('https://business.facebook.com/')
