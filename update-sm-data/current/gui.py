@@ -20,7 +20,7 @@ class Window(QWidget):
 		input_validator = QIntValidator()
 		input_validator.setBottom(1)
 		
-		yday_reach_label = QLabel(f'Enter the reach for {yday_date_string}:')
+		yday_reach_label = QLabel(f'Enter the reach for {yesterday.strftime("%b %d")}:')
 		self.yday_reach_input = QLineEdit()
 		self.yday_reach_input.setValidator(input_validator)
 		
