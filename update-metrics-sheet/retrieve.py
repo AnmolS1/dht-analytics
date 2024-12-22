@@ -25,11 +25,7 @@ def retrieve_given_date_range(start: str, end: str, properties: Property) -> dic
 	}
 	
 	country_idx_manager = {}
-	skip = True
 	for property in properties:
-		if skip:
-			skip = False
-			continue
 		metrics = [
 			Metric(name='bounceRate'),
 			Metric(name='userEngagementDuration'),

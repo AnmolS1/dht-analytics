@@ -27,7 +27,7 @@ def print_yesterday_to_file(wb: Workbook, yesterday: dict[str, Any]):
 		row_10 = sheet.cell(row=10, column=col).value
 		row_11 = sheet.cell(row=11, column=col).value
 		row_12 = sheet.cell(row=12, column=col).value
-		if col != max_col:
+		if col != max_col and row_12 and row_12 != '':
 			row_12 = str(row_12)
 			row_12 = row_12[:row_12.index('-') + 1] + get_column_letter(column_index_from_string(row_12[row_12.index('-') + 1:len(row_12) - 2]) + 1) + '12'
 		row_14 = sheet.cell(row=14, column=col).value

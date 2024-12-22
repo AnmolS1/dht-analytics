@@ -2,6 +2,7 @@
 **/.env
 **/credentials.json
 **/chromedriver
+**/logs
 
 .env.development.local
 /.vscode
